@@ -1,5 +1,6 @@
 # Correlation-and-Regression
 This contains code part of CS51 correlation and Regression assignment. 
+
 Formulated the following research question based on the King County House Sales:
 - Does the square feet of living space have a significant impact on the price of the house?
 
