@@ -1,8 +1,10 @@
-# Correlation-and-Regression
-This is correlation and regression analysis of the King County House Sales data. 
+# Correlation and Regression
+This is correlation and regression analysis of the King County House Sales data. The dataset is obtained from Kaggle at: https://www.kaggle.com/harlfoxem/housesalesprediction. the dataset includes homes sold between May 2014 and May 2015
+
 The first file answers a specific question I developed for a CS51 class assignment:
 - Does the square footage of the home have a significant impact on the price of the house?
-The second file is an iteration of the same dataset that includes more features that are evaluated to predict the prices of the house.
+
+The second file is an iteration and further improvement of the same dataset that includes more features that are evaluated to predict the prices of the house.
 Sample data is used to predict the prices of houses in the entire population
 
 ## The dataset features
@@ -34,14 +36,14 @@ To perform a correlation analysis, use the least squares line and check for thes
 1. Linear relationship between the variables
 2. The residual model is approximately normal: observed from residual histogram and normal probability plot
 3. Variability of residuals is constant
-4. The observations are independent: less than 10% of population and simple random observations
-The same assumptions are considered when making inference from the regression model.
-The price vs square footage correlation plot shows that some values may have been underpredicted by the model. The normal probability plot show a deviation from the line which shows that there are outliers or the distribution of data is skewed.. The residuals vs fitted values plot shows that the homoscedastic criteria is not met which may be because we are only using one predictor. These are important confounding factors to keep in mind as they may affect the interpretation
+4. The observations are independent: less than 10% of population and simple random observations\\
+The same assumptions are considered when making inference from the regression model.\\
+The price vs square footage correlation plot shows that some values may have been underpredicted by the model. The normal probability plot show a deviation from the line which shows that there are outliers or the distribution of data is skewed. The residuals vs fitted values plot shows that the homoscedastic criteria is not met which may be because we are only using one predictor. These are important confounding factors to keep in mind as they may affect the interpretation
 
 The correlation coefficient, coefficient of determination (R^2), slope of least squares line, confidence interval of least squares line and regression equation are computed from the mathematical definitions of each of the terms.
 
 ### Analysis of Results
-The correlation coefficient (Pearson's r) is 0.702 which means that there is a strong positive linear relationship between the price and square footage of the home.The outliers seen in the correlation plot could have reduced the value of r since they increase the standard deviation of the variables used in correlation coefficient formula. As stated above, the outliers may be caused by using only one predictor.
+The correlation coefficient (Pearson's r) is 0.702 which means that there is a strong positive linear relationship between the price and square footage of the home.The outliers seen in the correlation plot could have reduced the value of r since they increase the standard deviation of the variables used in correlation coefficient formula. The outliers may be caused by some houses being much larger than the median houses such as penthouses. 
 
 The value of r^2 is 0.493. This means that 49.3% in the variation of price can be explained by the variation in square footage of living. This means that 49.3% of the variation of the data points from the fitted line can be explained by the model. This implies that the model does an average job in fitting the data to the regression line which means that while square footage of the home is a good predictor, it is not enought to predict the prices of the houses overall.
 
@@ -51,3 +53,19 @@ The confidence interval here means that if we were to take many samples of the s
 
 ### Conclusion
 Overall, using induction, conclude that in the total population, there is a correlation between the square footage of the home and the price of the house. Second, by the regression model, the price of the house can be predicted using the square footage of the home but one predictor is not enough.
+
+## Regression with Multiple features
+### Wrangling and Exploratory Analysis
+As this uses multiple features, remove the columns that are not necessary using `df.drop`.\\
+Check for null values and if any, replace with the mean value. This will ensure that the model created accounts for these outliers in predicting the price of the houses.
+Check for outliers using `sns.boxplot` in various features. While outliers will affect the standard deviation of the features, I shall not remove them because it is expected that the real-world data has outliers in cases such as penthouses or mansions that may have extra features that are pricier than the median price.
+
+A correlation dataframe of price against other features helps to see which is the least correlated variable and which is the most correlated variable with price. The square footage of price analyzed above in 'Predicting Price with Square footage of home' is the most correlated. The correlation table or the correlation heatmap checks for correlation of the features with other features. This will help identify cases of multicollinearity. Multicollinearity affects the coefficients and p-values but not the prediction from the model and therefore there is no need to worry about it.
+
+### Model Development
+The linear regression model trains a model using the data provided and can be used to make predictions on test data. To make a prediction, one can replace the values of the desired feature in the equation of the form `Yhat = b0 + b1x1 + b2x2 + b3x3...` where x are the independent variables and b(i) is the coefficeint of the independent variable. The distribution plot of the actual values and predicted values of price of houses based on the features shows that the predicted values are reasonaly close. The model can do better with polynomial regression that ensures a better fit or ridge regression that checks for overfitting.
+
+Using the pipeline, the value of r-squared is better than simply using linear regression since the data undergoes polynomial transformation. Pipelines normalize and transforms data for machine learning and can be used to make predictions.  
+
+### Model Evaluation and Refinement
+The dataset is split into training and testing data using cross-validation. The advantage of cross-validation is that it reduces testing error since it divides the dataset into equal sections, k, and trains k-1 sections and tests on 1 section. This repeats until all sections have been used as testing data. It helps identify which is the best model that best describes the real world scenario.
