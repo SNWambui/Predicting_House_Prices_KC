@@ -4,6 +4,7 @@ This is correlation and regression analysis of the King County House Sales data.
 The first file answers a specific question I developed for a CS51 class assignment:
 - Does the square footage of the home have a significant impact on the price of the house?
 
+
 The second file is an iteration and further improvement of the same dataset that includes more features that are evaluated to predict the prices of the house.
 Sample data is used to predict the prices of houses in the entire population
 
