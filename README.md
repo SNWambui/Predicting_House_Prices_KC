@@ -37,8 +37,8 @@ To perform a correlation analysis, use the least squares line and check for thes
 1. Linear relationship between the variables
 2. The residual model is approximately normal: observed from residual histogram and normal probability plot
 3. Variability of residuals is constant
-4. The observations are independent: less than 10% of population and simple random observations\\
-The same assumptions are considered when making inference from the regression model.\\
+4. The observations are independent: less than 10% of population and simple random observations\
+The same assumptions are considered when making inference from the regression model.\
 The price vs square footage correlation plot shows that some values may have been underpredicted by the model. The normal probability plot show a deviation from the line which shows that there are outliers or the distribution of data is skewed. The residuals vs fitted values plot shows that the homoscedastic criteria is not met which may be because we are only using one predictor. These are important confounding factors to keep in mind as they may affect the interpretation
 
 The correlation coefficient, coefficient of determination (R^2), slope of least squares line, confidence interval of least squares line and regression equation are computed from the mathematical definitions of each of the terms.
