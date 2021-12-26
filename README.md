@@ -1,4 +1,9 @@
-# Correlation and Regression
+# Overview
+Perform correlation and regression analysis of the KC House Sales data. Using a linear model and Pearson's R, estimated the price range of houses based on square footage.<br>
+Computed predictive analysis on multiple features of the houses. Built and Fine tuned Linear Regression, Ridge Regression, Decision tree Regression and Random Forest Regressor models. Used cross-validation and grid-search to obtain the best estimators for predicting the prices of houses. 
+
+
+## Correlation and Regression
 This is correlation and regression analysis of the King County House Sales data. The dataset is obtained from Kaggle at: https://www.kaggle.com/harlfoxem/housesalesprediction. the dataset includes homes sold between May 2014 and May 2015
 
 The first file answers a specific question I developed for a CS51 class assignment:
@@ -8,7 +13,7 @@ The first file answers a specific question I developed for a CS51 class assignme
 The second file is an iteration and further improvement of the same dataset that includes more features that are evaluated to predict the prices of the house.
 Sample data is used to predict the prices of houses in the entire population
 
-## The dataset features
+### The dataset features
 - <b>id</b> : A notation for a house
 - <b> date</b>: Date house was sold
 - <b>price</b>: Price is prediction target
